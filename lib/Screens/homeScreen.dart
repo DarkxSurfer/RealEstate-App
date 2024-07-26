@@ -169,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Row(
                 children: [
                   SizedBox(
-                    width: 470,
+                    width: MediaQuery.of(context).size.width *0.9,
                     height: 300,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,

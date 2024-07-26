@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wishlistapp/Screens/homeScreen.dart';
+import 'package:wishlistapp/Screens/loginScreen.dart';
+import 'package:wishlistapp/Screens/wishlistScreen.dart';
 import 'package:wishlistapp/Widgets/product.dart';
 import 'package:wishlistapp/Widgets/wishlist_provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -24,6 +27,58 @@ class _DetailScreenState extends State<DetailScreen> {
   Widget build(BuildContext context) {
     final provider = Provider.of<WishlistProvider>(context);
     return Scaffold(
+      drawer: 
+      Drawer(
+          child: Column(
+        children: [
+          InkWell(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const LoginScreen()));
+            },
+            child: const ListTile(
+              title: Text('Login',
+                  style: TextStyle(
+                      color: Color(0xff0F2F44), fontWeight: FontWeight.w700)),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()));
+            },
+            child: const ListTile(
+              title: Text('Home',
+                  style: TextStyle(
+                      color: Color(0xff0F2F44), fontWeight: FontWeight.w700)),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => WishlistScreen()));
+            },
+            child: const ListTile(
+              title: Text(
+                'WishList',
+                style: TextStyle(
+                    color: Color(0xff0F2F44), fontWeight: FontWeight.w700),
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => DetailScreen()));
+            },
+            child: const ListTile(
+              title: Text('Details',
+                  style: TextStyle(
+                      color: Color(0xff0F2F44), fontWeight: FontWeight.w700)),
+            ),
+          ),
+        ],
+      )),
       backgroundColor: const Color(0xffFFFFFF),
       appBar: AppBar(
         backgroundColor: const Color(0xffFFFFFF),
@@ -47,6 +102,7 @@ class _DetailScreenState extends State<DetailScreen> {
           )
         ],
       ),
+      
       body: SingleChildScrollView(
         child: Center(
           child: Padding(

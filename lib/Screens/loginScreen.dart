@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wishlistapp/Screens/homeScreen.dart';
+import 'package:wishlistapp/Screens/signUp_screen.dart';
 import 'package:wishlistapp/Widgets/image_button.dart';
+import 'package:wishlistapp/Widgets/signin_func.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -56,29 +58,27 @@ class _LoginScreenState extends State<LoginScreen> {
               child: TextFormField(
                 controller: emailController,
                 decoration: const InputDecoration(
-                    contentPadding: EdgeInsets.only(
-                        right: 10, left: 10, top: 10, bottom: 10),
-                    hintText: 'Email',
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey),
-                    ),
-                    prefixIcon: Icon(Icons.email),
-                    
-                    ),
-                    validator: (value) {
-                      bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value!);
-                      if (value.isEmpty){
-                      return "Enter valid Email"; 
-                      }
-                      
-                      else if (!emailValid) {
-                      return "Enter valid Email";
-                        
-                      }
-                    },
+                  contentPadding:
+                      EdgeInsets.only(right: 10, left: 10, top: 10, bottom: 10),
+                  hintText: 'Email',
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
+                  prefixIcon: Icon(Icons.email),
+                ),
+                validator: (value) {
+                  bool emailValid = RegExp(
+                          r"^[a-zA-Z0-9.a-zA-z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                      .hasMatch(value!);
+                  if (value.isEmpty) {
+                    return "Enter valid Email";
+                  } else if (!emailValid) {
+                    return "Enter valid Email";
+                  }
+                },
               ),
             ),
             Padding(
@@ -102,37 +102,30 @@ class _LoginScreenState extends State<LoginScreen> {
                         setState(() {
                           passToggle = !passToggle;
                         });
-                        
                       },
                       child: Icon(
                           passToggle ? Icons.visibility : Icons.visibility_off),
                     )),
-                    validator: (value) {
-                    setState(() {
-                      
-                    });
-                      if (value!.isEmpty) {
-                      return "Enter Password";
-                        
-                      } else if (passController.text.length <6 ) {
-                      return "Password length should be more than 6";
-                        
-                      }
-                    },
+                validator: (value) {
+                  setState(() {});
+                  if (value!.isEmpty) {
+                    return "Enter Password";
+                  } else if (passController.text.length < 6) {
+                    return "Password length should be more than 6";
+                  }
+                },
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(6.0),
               child: InkWell(
                 onTap: () {
-                // if (_formfield.currentState!.validate()) {
-                // print("Succes"); 
-                Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()));
-                // emailController.clear();
-                // passController.clear();
-                  
-                // }
+                  setState(() {
+                    signIn(context, emailController.text, passController.text);
+
+                    emailController.clear();
+                    passController.clear();
+                  });
                 },
                 child: Container(
                   height: 50,
@@ -190,7 +183,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ImageButton(imagePath: "assets/Images/Apple.jpg"),
               ],
             ),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -198,7 +193,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   "Dont have an account?",
                 ),
                 InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignUpScreen()));
+                    },
                     child: const Text(
                       "Sign Up",
                       style: TextStyle(color: Colors.lightBlueAccent),

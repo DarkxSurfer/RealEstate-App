@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "217262401816",
+    "project_id": "myproperty-app",
+    "storage_bucket": "myproperty-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:217262401816:android:79923639992628c679566d",
+        "android_client_info": {
+          "package_name": "com.example.wishlistap"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDN6_dSVey5hZMi_yiV4nyG2mFFYygiOS4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
